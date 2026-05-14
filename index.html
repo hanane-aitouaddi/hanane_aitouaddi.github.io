@@ -1,430 +1,511 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hanane Aitouaddi | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: #0b1220;
-      color: white;
-      line-height: 1.6;
+      background: #07111f;
+      color: #f8fafc;
+      line-height: 1.7;
     }
 
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7, 17, 31, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo { font-weight: 800; color: #38bdf8; letter-spacing: 0.5px; }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .nav-links a:hover { color: #38bdf8; }
+
     header {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
       min-height: 100vh;
+      padding: 130px 8% 80px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 40px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.35), transparent 30%),
+        radial-gradient(circle at 85% 40%, rgba(14, 165, 233, 0.22), transparent 35%),
+        linear-gradient(135deg, #07111f, #0f172a 55%, #111827);
     }
 
     .hero {
       max-width: 1200px;
       width: 100%;
+      margin: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: 1.3fr 0.7fr;
       gap: 60px;
       align-items: center;
     }
 
-    .hero-text h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #60a5fa;
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 999px;
+      color: #7dd3fc;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
     }
 
-    .hero-text h2 {
-      font-size: 1.4rem;
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+      color: #f8fafc;
+    }
+
+    h1 span { color: #38bdf8; }
+
+    .hero h2 {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
       color: #cbd5e1;
-      margin-bottom: 25px;
       font-weight: 400;
+      margin-bottom: 24px;
     }
 
-    .hero-text p {
-      color: #94a3b8;
-      margin-bottom: 30px;
-      max-width: 600px;
-    }
+    .hero p { color: #94a3b8; max-width: 720px; margin-bottom: 32px; }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+    .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
 
     .btn {
-      padding: 14px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .btn-primary {
-      background: #2563eb;
-      color: white;
+    .btn-primary { background: #2563eb; color: white; }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-3px); }
+    .btn-secondary { border: 1px solid #38bdf8; color: #7dd3fc; }
+    .btn-secondary:hover { background: rgba(56, 189, 248, 0.12); transform: translateY(-3px); }
+
+    .profile-card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 24px 70px rgba(2, 6, 23, 0.55);
     }
 
-    .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-3px);
-    }
+    .profile-card h3 { color: #38bdf8; margin-bottom: 22px; font-size: 1.35rem; }
+    .info { color: #cbd5e1; margin-bottom: 14px; }
+    .info strong { color: white; }
 
-    .btn-secondary {
-      border: 2px solid #2563eb;
-      color: #60a5fa;
-    }
-
-    .btn-secondary:hover {
-      background: #2563eb;
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.05);
-      padding: 35px;
-      border-radius: 24px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 30px rgba(37,99,235,0.2);
-    }
-
-    .hero-card h3 {
-      color: #60a5fa;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-
-    .info {
-      margin-bottom: 15px;
-      color: #cbd5e1;
-    }
-
-    section {
-      padding: 100px 8%;
-    }
+    section { padding: 95px 8%; }
+    .container { max-width: 1200px; margin: auto; }
 
     .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: #60a5fa;
+      font-size: clamp(2rem, 4vw, 3rem);
       text-align: center;
+      margin-bottom: 16px;
+      color: #f8fafc;
     }
+
+    .section-title span { color: #38bdf8; }
+    .section-subtitle { text-align: center; color: #94a3b8; max-width: 760px; margin: 0 auto 55px; }
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
     }
 
-    .card {
-      background: #111827;
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: 0.3s;
+    .card, .project-card, .timeline-content {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 24px;
+      padding: 28px;
+      transition: 0.28s ease;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #2563eb;
+    .card:hover, .project-card:hover, .timeline-content:hover {
+      transform: translateY(-7px);
+      border-color: rgba(56, 189, 248, 0.65);
+      box-shadow: 0 18px 45px rgba(2, 132, 199, 0.14);
     }
 
-    .card h3 {
-      margin-bottom: 20px;
-      color: #60a5fa;
-    }
+    .card h3 { color: #38bdf8; margin-bottom: 18px; }
+    .card ul { list-style: none; }
+    .card li { color: #cbd5e1; margin-bottom: 10px; }
+    .card li::before { content: "▸ "; color: #38bdf8; font-weight: bold; }
 
-    .card ul {
-      list-style: none;
-    }
-
-    .card ul li {
-      margin-bottom: 10px;
-      color: #cbd5e1;
-    }
-
-    .projects {
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 26px;
     }
 
-    .project-card {
-      background: #111827;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: 0.3s;
+    .project-card { padding: 0; overflow: hidden; }
+
+    .project-image {
+      height: 210px;
+      background: linear-gradient(135deg, #1e3a8a, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
     }
 
-    .project-card:hover {
-      transform: translateY(-10px);
-      border-color: #2563eb;
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .project-content {
-      padding: 25px;
+    .project-body { padding: 26px; }
+    .project-body h3 { color: #38bdf8; margin-bottom: 12px; }
+    .project-body p { color: #cbd5e1; margin-bottom: 18px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .chip {
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.26);
+      color: #bae6fd;
     }
 
-    .project-content h3 {
-      margin-bottom: 15px;
-      color: #60a5fa;
+    .project-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .small-btn {
+      padding: 9px 14px;
+      border-radius: 10px;
+      background: #1e293b;
+      color: #e2e8f0;
+      font-size: 0.86rem;
+      border: 1px solid rgba(148, 163, 184, 0.18);
     }
+    .small-btn:hover { background: #2563eb; }
 
-    .project-content p {
+    .gallery-note {
+      margin-top: 28px;
+      padding: 18px 22px;
+      border-radius: 18px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.18);
       color: #cbd5e1;
     }
 
-    .timeline {
-      position: relative;
-      max-width: 1000px;
-      margin: auto;
-    }
-
+    .timeline { position: relative; max-width: 1000px; margin: auto; }
     .timeline::after {
       content: '';
       position: absolute;
-      width: 4px;
+      width: 3px;
       background: #2563eb;
       top: 0;
       bottom: 0;
       left: 50%;
-      margin-left: -2px;
+      transform: translateX(-50%);
     }
 
-    .timeline-item {
-      padding: 20px 40px;
-      position: relative;
-      width: 50%;
-    }
-
+    .timeline-item { padding: 20px 40px; position: relative; width: 50%; }
     .timeline-item::after {
       content: '';
       position: absolute;
       width: 18px;
       height: 18px;
-      right: -9px;
-      background: #60a5fa;
+      background: #38bdf8;
+      border: 4px solid #07111f;
       border-radius: 50%;
-      top: 28px;
+      top: 32px;
+      right: -9px;
+      z-index: 2;
     }
+    .right { left: 50%; }
+    .right::after { left: -9px; }
+    .timeline-content h3 { color: #38bdf8; margin-bottom: 8px; }
+    .timeline-content p { color: #cbd5e1; }
 
-    .left {
-      left: 0;
-    }
-
-    .right {
-      left: 50%;
-    }
-
-    .right::after {
-      left: -9px;
-    }
-
-    .timeline-content {
-      background: #111827;
-      padding: 25px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .timeline-content h3 {
-      color: #60a5fa;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background: #020617;
+    .contact-box {
+      max-width: 780px;
+      margin: auto;
       text-align: center;
-      padding: 40px;
-      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 28px;
+      padding: 42px;
     }
 
-    @media(max-width: 900px) {
-      .hero-text h1 {
-        font-size: 3rem;
-      }
+    .contact-box p { color: #cbd5e1; margin-bottom: 24px; }
 
-      .timeline::after {
-        left: 20px;
-      }
+    footer { padding: 34px; text-align: center; color: #94a3b8; background: #020617; }
 
-      .timeline-item {
-        width: 100%;
-        padding-left: 60px;
-        padding-right: 20px;
-      }
-
-      .timeline-item::after {
-        left: 11px;
-      }
-
-      .right {
-        left: 0;
-      }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      header { padding-top: 110px; }
+      .timeline::after { left: 20px; }
+      .timeline-item { width: 100%; padding-left: 60px; padding-right: 0; }
+      .timeline-item::after { left: 11px; }
+      .right { left: 0; }
     }
   </style>
 </head>
 <body>
 
+<nav>
+  <div class="nav-container">
+    <div class="logo">Hanane Aitouaddi</div>
+    <div class="nav-links">
+      <a href="#competences">Compétences</a>
+      <a href="#projets">Projets</a>
+      <a href="#experience">Expériences</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
 <header>
   <div class="hero">
-    <div class="hero-text">
-      <h1>Hanane Aitouaddi</h1>
-      <h2>Ingénieure en Génie Électrique & Management Industriel</h2>
+    <div>
+      <div class="tag">Portfolio professionnel · Génie électrique · Automatisation</div>
+      <h1>Hanane <span>Aitouaddi</span></h1>
+      <h2>Ingénieure en Génie Électrique et Management Industriel</h2>
       <p>
-        Passionnée par l’automatisation industrielle, les systèmes électriques et les technologies innovantes.
-        Expérience en automatisation, maintenance industrielle, HVAC/CTA, programmation PLC Schneider,
-        supervision industrielle et systèmes embarqués.
+        Passionnée par l’automatisation industrielle, les systèmes électriques, la maintenance et les technologies innovantes.
+        Mon portfolio présente mes projets en automatisation, électrotechnique, HVAC/CTA, supervision industrielle et systèmes embarqués.
       </p>
-
       <div class="buttons">
-        <a href="CV_Hanane_Aitouaddi_ATS.pdf" class="btn btn-primary" target="_blank">Télécharger mon CV</a>
+        <a href="CV_Hanane_Aitouaddi_ATS.pdf" class="btn btn-primary" target="_blank">📄 Télécharger mon CV</a>
+        <a href="#projets" class="btn btn-secondary">Voir mes projets</a>
         <a href="https://www.linkedin.com/in/hanane-aitouaddi-b03950225" class="btn btn-secondary" target="_blank">LinkedIn</a>
       </div>
     </div>
 
-    <div class="hero-card">
-      <h3>Informations</h3>
-      <div class="info">📍 Casablanca, Maroc</div>
-      <div class="info">📧 aitouaddihanane@gmail.com</div>
-      <div class="info">📞 +212 7 01 22 06 03</div>
-      <div class="info">🎓 FST Tanger – GEMI</div>
-      <div class="info">⚡ Automatisation Industrielle</div>
+    <div class="profile-card">
+      <h3>Profil rapide</h3>
+      <div class="info"><strong>Localisation :</strong> Casablanca, Maroc</div>
+      <div class="info"><strong>Email :</strong> aitouaddihanane@gmail.com</div>
+      <div class="info"><strong>Téléphone :</strong> +212 7 01 22 06 03</div>
+      <div class="info"><strong>Formation :</strong> FST Tanger – GEMI</div>
+      <div class="info"><strong>Domaine :</strong> Automatisation industrielle & électrotechnique</div>
     </div>
   </div>
 </header>
 
-<section>
-  <h2 class="section-title">Compétences Techniques</h2>
+<section id="competences">
+  <div class="container">
+    <h2 class="section-title">Compétences <span>techniques</span></h2>
+    <p class="section-subtitle">Compétences développées à travers mes stages, projets académiques, formations et réalisations industrielles.</p>
 
-  <div class="skills-grid">
-    <div class="card">
-      <h3>Automatisation Industrielle</h3>
-      <ul>
-        <li>Schneider M340 / M580</li>
-        <li>Control Expert</li>
-        <li>Grafcet / Ladder</li>
-        <li>Vijeo Designer</li>
-        <li>Capteurs industriels</li>
-        <li>IHM & Supervision</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Électrotechnique</h3>
-      <ul>
-        <li>Dimensionnement électrique</li>
-        <li>Armoires électriques</li>
-        <li>Variateurs ABB ACS480</li>
-        <li>Lecture de schémas électriques</li>
-        <li>Maintenance industrielle</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Programmation & Électronique</h3>
-      <ul>
-        <li>C / C++</li>
-        <li>Arduino</li>
-        <li>ESP32</li>
-        <li>Raspberry Pi</li>
-        <li>Systèmes embarqués</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Projets</h2>
-
-  <div class="projects">
-    <div class="project-card">
-      <div class="project-content">
-        <h3>PFE – MIA Automotive</h3>
-        <p>
-          Conception et automatisation d’un chariot de matelassage pour machine de coupe industrielle.
-          Intégration d’un variateur ABB ACS480, ESP32, capteurs industriels et encodeur incrémental.
-        </p>
+    <div class="skills-grid">
+      <div class="card">
+        <h3>Automatisation industrielle</h3>
+        <ul>
+          <li>Schneider M340 / M580</li>
+          <li>Control Expert</li>
+          <li>Grafcet / Ladder</li>
+          <li>Vijeo Designer</li>
+          <li>IHM & Supervision</li>
+          <li>Capteurs industriels</li>
+        </ul>
       </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-content">
-        <h3>PFA – HVAC / CTA</h3>
-        <p>
-          Étude et dimensionnement d’une Centrale de Traitement d’Air (CTA)
-          selon la norme ISO 14644-5 pour des salles propres pharmaceutiques.
-        </p>
+      <div class="card">
+        <h3>Électrotechnique</h3>
+        <ul>
+          <li>Dimensionnement électrique</li>
+          <li>Armoires électriques</li>
+          <li>Variateurs de vitesse VFD</li>
+          <li>ABB ACS480</li>
+          <li>Lecture de schémas électriques</li>
+          <li>Maintenance préventive et curative</li>
+        </ul>
       </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-content">
-        <h3>Automatisation Schneider</h3>
-        <p>
-          Réalisation de plusieurs systèmes automatisés : remplissage,
-          perçage automatique, réservoir d’eau automatisé et supervision IHM.
-        </p>
+      <div class="card">
+        <h3>Programmation & électronique</h3>
+        <ul>
+          <li>C / C++</li>
+          <li>Arduino</li>
+          <li>ESP32</li>
+          <li>Systèmes embarqués</li>
+          <li>Bases de données industrielles</li>
+          <li>Logique séquentielle</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section>
-  <h2 class="section-title">Expériences Professionnelles</h2>
+<section id="projets">
+  <div class="container">
+    <h2 class="section-title">Mes <span>projets</span></h2>
+    <p class="section-subtitle">Ajoute tes images dans un dossier nommé <strong>images</strong>, puis remplace les noms des images dans le code.</p>
 
-  <div class="timeline">
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-image">
+          <img src="images/mia-pfe.jpg" alt="Projet PFE MIA" onerror="this.style.display='none'; this.parentElement.innerHTML='PFE MIA';">
+        </div>
+        <div class="project-body">
+          <h3>PFE – MIA Automotive</h3>
+          <p>
+            Conception et automatisation d’un chariot de matelassage pour machine de coupe industrielle avec intégration d’un variateur ABB ACS480, ESP32, encodeur incrémental et capteurs industriels.
+          </p>
+          <div class="chips">
+            <span class="chip">ESP32</span><span class="chip">ABB ACS480</span><span class="chip">Grafcet</span><span class="chip">Capteurs</span><span class="chip">IHM</span>
+          </div>
+          <div class="project-links">
+            <a class="small-btn" href="images/mia-pfe.jpg" target="_blank">Voir l’image</a>
+            <a class="small-btn" href="presentation-pfe.pdf" target="_blank">Présentation PDF</a>
+          </div>
+        </div>
+      </article>
 
-    <div class="timeline-item left">
-      <div class="timeline-content">
-        <h3>MIA – Stage PFE</h3>
-        <p>Maintenance industrielle & automatisation – 2026</p>
-      </div>
+      <article class="project-card">
+        <div class="project-image">
+          <img src="images/cta-abn.jpg" alt="Projet CTA ABN" onerror="this.style.display='none'; this.parentElement.innerHTML='CTA ABN';">
+        </div>
+        <div class="project-body">
+          <h3>PFA – ABN Engineering & Consulting</h3>
+          <p>
+            Étude et dimensionnement d’une Centrale de Traitement d’Air à partir des bilans thermiques et aérauliques, avec choix des CTA adaptées aux locaux de l’usine PRODIMEDIC.
+          </p>
+          <div class="chips">
+            <span class="chip">HVAC</span><span class="chip">CTA</span><span class="chip">ISO 14644-5</span><span class="chip">Bilan thermique</span>
+          </div>
+          <div class="project-links">
+            <a class="small-btn" href="images/cta-abn.jpg" target="_blank">Voir l’image</a>
+            <a class="small-btn" href="presentation-cta.pdf" target="_blank">Présentation PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <img src="images/schneider-m340.jpg" alt="Projet Schneider M340" onerror="this.style.display='none'; this.parentElement.innerHTML='M340';">
+        </div>
+        <div class="project-body">
+          <h3>Automatisation Schneider M340</h3>
+          <p>
+            Programmation de systèmes automatisés : remplissage en continu, perçage automatique, réservoir d’eau automatisé et IHM de pilotage sous Vijeo Designer.
+          </p>
+          <div class="chips">
+            <span class="chip">M340</span><span class="chip">Control Expert</span><span class="chip">SFC</span><span class="chip">Ladder</span><span class="chip">Vijeo Designer</span>
+          </div>
+          <div class="project-links">
+            <a class="small-btn" href="images/schneider-m340.jpg" target="_blank">Voir l’image</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <img src="images/robotech.jpg" alt="Projet ROBOTECH" onerror="this.style.display='none'; this.parentElement.innerHTML='ROBOTECH';">
+        </div>
+        <div class="project-body">
+          <h3>ROBOTECH – Robotique Arduino</h3>
+          <p>
+            Formation et encadrement d’étudiants dans le domaine de la robotique à base d’Arduino, avec initiation aux capteurs, actionneurs et logique de programmation.
+          </p>
+          <div class="chips">
+            <span class="chip">Arduino</span><span class="chip">Robotique</span><span class="chip">Capteurs</span><span class="chip">Formation</span>
+          </div>
+          <div class="project-links">
+            <a class="small-btn" href="images/robotech.jpg" target="_blank">Voir l’image</a>
+          </div>
+        </div>
+      </article>
     </div>
 
-    <div class="timeline-item right">
-      <div class="timeline-content">
-        <h3>ABN Engineering & Consulting</h3>
-        <p>Stage PFA – HVAC / CTA – 2025</p>
+    <div class="gallery-note">
+      <strong>Important :</strong> les fichiers attendus sont : <code>images/mia-pfe.jpg</code>, <code>images/cta-abn.jpg</code>, <code>images/schneider-m340.jpg</code>, <code>images/robotech.jpg</code>, <code>presentation-pfe.pdf</code> et <code>presentation-cta.pdf</code>. Tu peux changer ces noms selon tes fichiers.
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Expériences <span>professionnelles</span></h2>
+    <p class="section-subtitle">Parcours industriel dans l’automobile, la maintenance électrique, les utilités industrielles et le CVC.</p>
+
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3>MIA – Stage PFE</h3>
+          <p>Conception et automatisation d’un chariot de matelassage pour machine de coupe industrielle · 2026</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h3>ABN Engineering & Consulting</h3>
+          <p>Étude et dimensionnement d’une Centrale de Traitement d’Air pour locaux industriels · 2025</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3>BODOR MILLS Nor’Dar</h3>
+          <p>Stage en électricité et maintenance industrielle · 2024</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h3>COBOMI Coca-Cola</h3>
+          <p>Stage d’observation en process, utilités et infrastructures · 2023</p>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="timeline-item left">
-      <div class="timeline-content">
-        <h3>BODOR MILLS Nor'Dar</h3>
-        <p>Maintenance électrique – 2024</p>
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <h2 class="section-title">Contact</h2>
+      <p>Disponible pour des opportunités en automatisation industrielle, électrotechnique, maintenance, systèmes industriels et projets d’ingénierie.</p>
+      <div class="buttons" style="justify-content:center;">
+        <a href="mailto:aitouaddihanane@gmail.com" class="btn btn-primary">M’envoyer un email</a>
+        <a href="CV_Hanane_Aitouaddi_ATS.pdf" class="btn btn-secondary" target="_blank">Télécharger CV</a>
+        <a href="https://www.linkedin.com/in/hanane-aitouaddi-b03950225" class="btn btn-secondary" target="_blank">LinkedIn</a>
       </div>
     </div>
-
-    <div class="timeline-item right">
-      <div class="timeline-content">
-        <h3>COBOMI Coca-Cola</h3>
-        <p>Stage observation – Process & Utilités – 2023</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Hanane Aitouaddi | Portfolio Professionnel</p>
+  © 2026 Hanane Aitouaddi · Portfolio professionnel
 </footer>
 
 </body>
